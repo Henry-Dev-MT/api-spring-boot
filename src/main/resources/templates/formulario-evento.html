@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Evento</title>
+
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Cadastrar Novo Evento</h1>
+
+    <p>Preencha os detalhes do evento abaixo.</p>
+
+    <form th:action="@{/evento}"
+          th:object="${evento}"
+          method="post">
+
+
+
+        <label for="titulo">Título do Evento</label>
+        <input id="titulo" type="text" th:field="*{titulo}" required>
+
+        <p class="erro"
+           th:if="${#fields.hasErrors('titulo')}"
+           th:errors="*{titulo}"></p>
+
+
+
+        <label for="local">Local</label>
+        <input id="local" type="text" th:field="*{local}" required>
+
+        <p class="erro"
+           th:if="${#fields.hasErrors('local')}"
+           th:errors="*{local}"></p>
+
+
+        <label for="categoria">Categoria</label>
+
+        <select id="categoria" th:field="*{categoria}" required>
+            <option value="">Selecione uma categoria</option>
+            <option value="Tecnologia">Tecnologia</option>
+            <option value="Negócios">Negócios</option>
+            <option value="Design">Design</option>
+        </select>
+
+        <p class="erro"
+           th:if="${#fields.hasErrors('categoria')}"
+           th:errors="*{categoria}"></p>
+
+
+
+        <label for="numeroVagas">Número de Vagas</label>
+        <input id="numeroVagas" type="number" th:field="*{numeroVagas}" required>
+
+        <p class="erro"
+           th:if="${#fields.hasErrors('numeroVagas')}"
+           th:errors="*{numeroVagas}"></p>
+
+
+
+        <button type="submit">Cadastrar Evento</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
